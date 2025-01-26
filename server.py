@@ -6,6 +6,8 @@ from typing_extensions import Annotated
 import pickle
 import pandas as pd
 
+app = FastAPI()
+
 origins = [
     "http://localhost:8501",
 ]

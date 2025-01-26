@@ -4,6 +4,7 @@ import time
 import requests
 import json
 
+
 # Title of the app
 st.title("🎉 PCOS Health Check 🎉")
 st.markdown("### A quick questionnaire to learn more about your health!")
@@ -119,6 +120,7 @@ with st.form("pcos_form"):
 
                 else:  # If the API says the person is unlikely to have PCOS
                     st.success("🎉 Based on your answers, it's unlikely that you have PCOS!")
+                    st.balloons()
                     st.markdown("""
             ### 🌟 **Great News! 🌟**
             It looks like you don’t show significant signs of PCOS based on this questionnaire. While this is reassuring, it’s always a good idea to maintain regular checkups with your healthcare provider and keep making healthy lifestyle choices.
@@ -142,11 +144,10 @@ with st.form("pcos_form"):
         except Exception as e:
             st.error(f"❌ An error occurred while sending data: {e}")
 
-        # Feedback on lifestyle score
-        prediction = response.json()[0]['result']
-        # st.write(prediction)
-        
+        st.write("🎈 Your responses have been saved. Thank you! 🎈")
+btn = st.button("Reset Form")
+if btn:
+    st.rerun()       
         
         # Celebration
-        st.balloons()
-        st.write("🎈 Your responses have been saved. Thank you! 🎈")
+        

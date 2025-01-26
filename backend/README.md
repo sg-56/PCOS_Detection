@@ -1,2 +1,0 @@
-**PCOS DETECTION**
-

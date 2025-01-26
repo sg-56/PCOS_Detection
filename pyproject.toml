@@ -5,9 +5,9 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
+    "streamlit>=1.41.1",
     "scikit-learn",
     "pandas",
     "fastapi[standard]",
-    "uvicorn>=0.34.0",
-    "streamlit>=1.41.1",
+    "uvicorn[standard]>=0.34.0",
 ]
