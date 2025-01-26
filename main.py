@@ -6,9 +6,8 @@ import pickle
 import pandas as pd
 
 
-
 MODEL_PATH = './artifacts/model.pkl'
-PREPROCESSOR_PATH = './artifacts/preproccessor.pkl'
+PREPROCESSOR_PATH = './artifacts/preprocessor.pkl'
 def load_preproccesor():
     with open(PREPROCESSOR_PATH, 'rb') as file:
         preprocessor = pickle.load(file)
