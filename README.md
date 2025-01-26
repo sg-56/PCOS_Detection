@@ -78,7 +78,6 @@ The backend handles the machine learning model and serves predictions via an API
 ```bash
 cd backend
 uv init 
-uv install 
 ```
 
 ### 2. Install Dependencies
@@ -95,7 +94,7 @@ uv install
 Run `train.py` to train the model and save it for later use.
 
 ```bash
-python train.py
+uv run train.py
 ```
 
 ### 4. Start the Backend Server 🚀
@@ -158,8 +157,8 @@ docker-compose up --build
 
 This will build and start both the frontend and backend services. You can access the services at:
 
-- **Backend**: [http://localhost:5000](http://localhost:8000)
-- **Frontend**: [http://localhost:3000](http://localhost:8501)
+- **Backend**: [http://localhost:8000](http://localhost:8000)
+- **Frontend**: [http://localhost:8501](http://localhost:8501)
 
 ---
 
@@ -209,6 +208,3 @@ The model is deployed as a web service! 🎉 Once it’s running, you can intera
 
 Let’s make PCOS prediction smarter and faster! 💡
 
----
-
-Let me know if you need further edits or additional changes! 😊
