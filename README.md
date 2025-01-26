@@ -19,6 +19,7 @@ Here’s the structure of the repository to help you navigate:
 ├── README.md                # This README file
 ├── backend                  # Backend service code and model
 │   ├── Dockerfile           # Dockerfile for backend container
+│   ├── README.md            # Backend README with details
 │   ├── artifacts            # Trained model and preprocessor
 │   │   ├── model.pkl        # Saved machine learning model
 │   │   └── preprocessor.pkl # Preprocessor used during training
@@ -40,47 +41,127 @@ Here’s the structure of the repository to help you navigate:
 
 ## Instructions to Run the Project 💻
 
+⚠️ **Warning**: The git repo has been configured with docker-compose since I wanted to run frontend and backend seperately.If you want to run locally u have to change the api_url of the /frontend/app.py from http://fastapi:8000/predict to "http://localhost:8000/predict"
+
 ### 1. Clone the Repository 💾
 
 First, get the code by cloning the repository to your local machine. Run the following command:
 
 ```bash
-git clone ["https://github.com/sg-56/PCOS_Detection"]
-cd 
+git clone [https://github.com/sg-56/PCOS_Detection]
+cd PCOS_Detection/
 ```
 
 ### 2. Set Up the Environment 🛠️
 
-- **Using Pipenv**:  
-  Install the required dependencies with Pipenv. 🎉
+We’ll use **`uv`**, a fast and modern Python package installer, to set up the environment. Here's how:
+
+1. **Install `uv`** (if not already installed):  
+   You can install `uv` using `pip` or `curl`:
+
+   ```bash
+   pip install uv
+   ```
+
+   or:
+
+   ```bash
+   curl -LsSf https://astral.sh/uv/install.sh | sh
+   ```
+    For more info see here : [https://docs.astral.sh/uv/getting-started/installation/]
+## Running the Backend Service 🖥️
+
+The backend handles the machine learning model and serves predictions via an API. Here's how you can run it separately.
+
+### 1. Navigate to the `backend/` directory
+
+```bash
+cd backend
+uv init 
+uv install 
+```
+
+### 2. Install Dependencies
+
+- **Using `uv`**:  
+  Install the dependencies with `uv`:
 
   ```bash
-  pipenv install
-  pipenv shell
+    uv pip install -r pyproject.toml --all-extras
   ```
 
-- **Using Conda or Virtual Environment**:  
-  Or, create a virtual environment and install dependencies from `pyproject.toml` or `requirements.txt`.
+### 3. Train the Model (First Time Only) 🔥
 
-### 3. Run the Application 🚀
+Run `train.py` to train the model and save it for later use.
 
-- **Train the Model**:  
-  Now, it's time to train the model! Run `train.py` to get started:
+```bash
+python train.py
+```
+
+### 4. Start the Backend Server 🚀
+
+Once the model is trained, run `server.py` to launch the backend server:
+
+```bash
+uv run fastapi run server.py
+```
+
+The backend service will start and be available on `http://localhost:5000/predict`. You can now access the model via API endpoints.
+
+---
+
+## Running the Frontend Service 🌐
+
+The frontend is a simple web app that allows you to interact with the model. Here's how you can run it separately.
+
+### 1. Navigate to the `frontend/` directory
+
+```bash
+cd frontend
+```
+
+### 2. Install Dependencies
+
+- **Using `uv`**:  
+  Install the dependencies with `uv`:
 
   ```bash
-  python train.py
+    uv pip install -r pyproject.toml --all-extras
   ```
 
-- **Serve the Model**:  
-  Once the model is trained and saved, run `predict.py` to launch the web service and start serving predictions.
+### 3. Start the Frontend Application 🚀
 
-  ```bash
-  python predict.py
-  ```
+Run the following command to launch the frontend service:
 
-### 4. Access the Web Service 🌐
+```bash
+uv run streamlit run app.py
+```
 
-Once the service is running, open your browser and navigate to the specified URL (e.g., `http://localhost:5000`). You’re good to go! 🖥️
+The frontend service will start, and you can access the web interface via `http://localhost:8501` to interact with the model.
+
+---
+
+## Running Both Backend and Frontend Together with Docker 🐳
+
+If you prefer to run both services together, you can use `docker-compose`. This will set up both the backend and frontend in Docker containers, making it easy to run the whole application at once.
+
+## Please note : I encourage you to use docker-compose as the first option since all the files have been configured to run with docker
+
+### 1. Use Docker Compose
+** Please note if you are running using docker-compose then change the api_url in the /frontend/app.py from "http:localhost:8000/predict" to "http:fastapi:8000/predict" ** 
+- The above step is very important for the docker compose to work
+
+In the root directory, run:
+```bash
+docker-compose up --build
+```
+
+This will build and start both the frontend and backend services. You can access the services at:
+
+- **Backend**: [http://localhost:5000](http://localhost:8000)
+- **Frontend**: [http://localhost:3000](http://localhost:8501)
+
+---
 
 ## Data 📊
 
@@ -108,32 +189,26 @@ These notebooks show how we prepare the data, analyze feature importance, and ch
   - Loads the dataset, prepares it for training, and fits a machine learning model.
   - Saves the trained model and preprocessor as `.pkl` files so you can use them later.
 
-- **predict.py**:
-  - Loads the saved model and preprocessor.
-  - Deploys the model as a web service using Flask for real-time predictions.
 
 ## Files with Dependencies 📦
 
 - **pyproject.toml**: The Python project configuration file that lists all the dependencies. 📝
-- You can also use `requirements.txt` or `Pipenv` if you prefer! 💼
+
 
 ## Dockerfile 🐳
 
 Dockerfiles for both **backend** and **frontend** are included in their respective directories. These are used to create containers for the backend and frontend services.
 
-### To build and run the Docker containers 🚢:
-
-```bash
-docker-compose up --build
-```
-
-This will set up both the backend and frontend in Docker containers. Dockerize your life! 🐋
+---
 
 ## Deployment 🚀
 
 The model is deployed as a web service! 🎉 Once it’s running, you can interact with it by sending HTTP requests to the endpoint where the model is hosted. 🌍
 
 - **URL to the deployed service**: [<deployment_url>](<deployment_url>) 🌐
-- **Video demonstration**: [Check out this demo](<demo_link>) 🎥
 
 Let’s make PCOS prediction smarter and faster! 💡
+
+---
+
+Let me know if you need further edits or additional changes! 😊
