@@ -9,6 +9,13 @@ Welcome to the **PCOS Prediction Model**! 🎉 This project uses machine learnin
 
 PCOS is a hormonal disorder that affects women of reproductive age and can lead to infertility, weight gain, and other health issues. Early prediction of PCOS can make a huge difference in managing symptoms and preventing long-term complications. 💪 This project focuses on using machine learning to predict the risk of PCOS based on a dataset with key features. 📊
 
+
+## Dataset
+The data used to train and test the model is in the `data` folder. You can download it from here:
+
+- [PCOS Prediction Dataset](https://www.kaggle.com/code/vengadeshwaran58/pcos-dataset-exploration-and-prediction) 📥
+
+
 ## Repository Structure 📂
 
 Here’s the structure of the repository to help you navigate:
@@ -164,9 +171,6 @@ This will build and start both the frontend and backend services. You can access
 
 ## Data 📊
 
-The data used to train and test the model is in the `data` folder. You can download it from here:
-
-- [PCOS Prediction Dataset](<dataset_download_url>) 📥
 
 Files in `data/`:
 
@@ -204,7 +208,14 @@ Dockerfiles for both **backend** and **frontend** are included in their respecti
 
 The model is deployed as a web service! 🎉 Once it’s running, you can interact with it by sending HTTP requests to the endpoint where the model is hosted. 🌍
 
-- **URL to the deployed service**: [<deployment_url>](<deployment_url>) 🌐
+- **URL to the deployed service**: [https://pcosdetection.streamlit.app/] 🌐
+- Steps to deploy to Streamlit Cloud
+  - Login/Signup for streamlit cloud from here [https://share.streamlit.io/]
+  - Click on Create APP -> Deploy app from Github -> fill the form with details such github repo link -> select branch -> select path
+  - Select App file
+  - That's it your app will be launched (Please note i have modified the files the files to faciliate streamlit deployment that can be found in streamlit branch of this repo)
+  - WARNING - U need to have requirements.txt for streamlit cloud , please generate with this command "uv pip compile pyproject.toml -o requirements.txt"
 
 Let’s make PCOS prediction smarter and faster! 💡
+
 
