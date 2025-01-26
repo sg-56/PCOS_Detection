@@ -5,9 +5,10 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
+    "pandas>=2.2.3",
+    "scikit-learn>=1.6.1",
     "streamlit>=1.41.1",
-    "scikit-learn",
-    "pandas",
-    "fastapi[standard]",
-    "uvicorn[standard]>=0.34.0",
 ]
+
+[tool.uv.workspace]
+members = ["backend"]

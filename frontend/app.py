@@ -1,4 +1,3 @@
-import jsonify.convert
 import streamlit as st
 import time
 import requests
@@ -8,6 +7,8 @@ import json
 # Title of the app
 st.title("🎉 PCOS Health Check 🎉")
 st.markdown("### A quick questionnaire to learn more about your health!")
+
+api_url = "http://fastapi:8000/predict" 
 
 countries = ['Madagascar', 'Vietnam', 'Somalia', 'Malawi', 'France', 'Rwanda', 'Tanzania', 'United States', 'Italy', 'Australia', 'India', 'Argentina', 'Morocco', 'Zambia', 'Romania', 'Sudan', 'Benin', 'Burkina Faso', 'Nepal', 'Mali', 'Malaysia', 'Chile', 'Mozambique', 'Ivory Coast', 'Taiwan', 'Nigeria', 'Zimbabwe', 'Uzbekistan', 'Germany', 'Indonesia', 'Egypt', 'Russia', 'Chad', 'Peru', 'Bangladesh', 'Iraq', 'Canada', 'Cameroon', 'Brazil', 'North Korea', 'Kazakhstan', 'Uganda', 'Guinea', 'Yemen', 'Saudi Arabia', 'South Korea', 'Afghanistan', 'Spain', 'Ghana', 'Guatemala', 'China', 'Japan', 'Pakistan', 'Kenya', 'Ethiopia', 'South Africa', 'Poland', 'Colombia', 'Burundi', 'Venezuela', 'Philippines', 'Ukraine', 'Ecuador', 'Sri Lanka', 'Cambodia', 'Niger', 'Thailand', 'Netherlands', 'Iran', 'Senegal', 'Turkey', 'United Kingdom', 'Syria', 'Algeria', 'Myanmar', 'Angola', 'Mexico']
 
@@ -81,7 +82,7 @@ with st.form("pcos_form"):
         # Display results
         st.write("### 🎉 Thank you for completing the questionnaire! 🎉")
 
-        api_url = "http://localhost:5000/predict" 
+        
         try:
             response = requests.post(api_url,data=json.dumps(data),headers={'Content-Type':'application/json'})
 

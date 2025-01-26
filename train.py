@@ -72,12 +72,12 @@ print(f"Recall: {recall:.4f}")
 print(f"F1-Score: {f1:.4f}")
 
 # Save artifacts
-os.makedirs('./artifacts', exist_ok=True)
+os.makedirs('.backend/artifacts', exist_ok=True)
 
-with open('./artifacts/preprocessor.pkl', 'wb') as file:
+with open('.backend/artifacts/preprocessor.pkl', 'wb') as file:
     pickle.dump(transformer, file)
 
-with open('./artifacts/model.pkl', 'wb') as file:
+with open('.backend/artifacts/model.pkl', 'wb') as file:
     pickle.dump(model, file)
 
 print("Model and preprocessor saved successfully.")
