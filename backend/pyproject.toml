@@ -9,5 +9,4 @@ dependencies = [
     "pandas",
     "fastapi[standard]",
     "uvicorn>=0.34.0",
-    "streamlit>=1.41.1",
 ]

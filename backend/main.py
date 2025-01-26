@@ -1,9 +1,22 @@
 from fastapi import FastAPI
 from pydantic import BaseModel, ValidationError, conint, constr,Field
 from typing import Optional, Literal
+from fastapi.middleware.cors import CORSMiddleware
 from typing_extensions import Annotated
 import pickle
 import pandas as pd
+
+origins = [
+    "http://localhost:8501",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 MODEL_PATH = './artifacts/model.pkl'
