@@ -9,6 +9,13 @@ Welcome to the **PCOS Prediction Model**! 🎉 This project uses machine learnin
 
 PCOS is a hormonal disorder that affects women of reproductive age and can lead to infertility, weight gain, and other health issues. Early prediction of PCOS can make a huge difference in managing symptoms and preventing long-term complications. 💪 This project focuses on using machine learning to predict the risk of PCOS based on a dataset with key features. 📊
 
+
+## Dataset
+The data used to train and test the model is in the `data` folder. You can download it from here:
+
+- [PCOS Prediction Dataset](https://www.kaggle.com/code/vengadeshwaran58/pcos-dataset-exploration-and-prediction) 📥
+
+
 ## Repository Structure 📂
 
 Here’s the structure of the repository to help you navigate:
@@ -164,9 +171,6 @@ This will build and start both the frontend and backend services. You can access
 
 ## Data 📊
 
-The data used to train and test the model is in the `data` folder. You can download it from here:
-
-- [PCOS Prediction Dataset](<dataset_download_url>) 📥
 
 Files in `data/`:
 
