@@ -1,157 +1,139 @@
-# 🛠️ Project Name: PCOS Health Check Web Application
 
-## 📖 Overview
-Welcome to the **PCOS Health Check Web Application**, where we aim to help individuals assess the possibility of Polycystic Ovary Syndrome (PCOS) through an engaging questionnaire and advanced data processing. This repository contains everything from data preparation and machine learning model building to a fully functional REST API service.
+# 🚺 PCOS Prediction Model 🧬
 
----
+## Description 🌟
 
-## 🎯 Potential Use Cases
+Welcome to the **PCOS Prediction Model**! 🎉 This project uses machine learning magic ✨ to predict the likelihood of Polycystic Ovary Syndrome (PCOS) based on different input features. It’s designed to help healthcare professionals make better, faster diagnoses. 🩺 And guess what? The model is deployed as a web service for seamless interaction! 🚀
 
-1. **Early Detection**: Identify individuals who might be at risk of PCOS and encourage them to seek medical advice.
-2. **Health Awareness**: Increase awareness of PCOS symptoms and lifestyle changes that can mitigate risks.
-3. **Healthcare Insights**: Provide actionable insights for medical practitioners and researchers.
+## Problem 😟
 
----
+PCOS is a hormonal disorder that affects women of reproductive age and can lead to infertility, weight gain, and other health issues. Early prediction of PCOS can make a huge difference in managing symptoms and preventing long-term complications. 💪 This project focuses on using machine learning to predict the risk of PCOS based on a dataset with key features. 📊
 
-## 📂 Repository Structure
+## Repository Structure 📂
+
+Here’s the structure of the repository to help you navigate:
 
 ```
-.
-├── .gitignore             # Ignored files and folders
-├── .python-version        # Python version used for the project
-├── README.md              # You're reading it now!
-├── app.py                 # Streamlit app for user interaction
-├── backend/               # Backend for model training and REST API
-│   ├── Dockerfile         # Dockerfile for containerizing the backend
-│   ├── README.md          # Backend-specific documentation
-│   ├── artifacts/         # Model and preprocessor files
-│   │   ├── model.pkl      # Trained ML model
-│   │   └── preprocessor.pkl # Preprocessing pipeline
-│   ├── data/              # Dataset and processed data
-│   │   ├── cleaned_data.csv
-│   │   └── pcos_prediction_dataset.csv
-│   ├── main.py            # REST API server script
-│   ├── notebooks/         # Jupyter notebooks for EDA and modeling
-│   │   ├── EDA.ipynb      # Exploratory Data Analysis
-│   │   └── Model_Building.ipynb # Model development
-│   ├── pyproject.toml     # Python project metadata
-│   ├── requirements.txt   # Backend dependencies
-│   └── train.py           # Model training script
-├── pyproject.toml         # Python project metadata for the app
-└── uv.lock                # Dependency lock file
+├── .gitignore               # Git ignore file to exclude unnecessary files
+├── .python-version          # Python version management file
+├── README.md                # This README file
+├── backend                  # Backend service code and model
+│   ├── Dockerfile           # Dockerfile for backend container
+│   ├── artifacts            # Trained model and preprocessor
+│   │   ├── model.pkl        # Saved machine learning model
+│   │   └── preprocessor.pkl # Preprocessor used during training
+│   ├── pyproject.toml       # Python project dependencies for backend
+│   └── server.py            # Backend server script
+├── data                     # Dataset files
+│   ├── cleaned_data.csv     # Cleaned data ready for model training
+│   └── pcos_prediction_dataset.csv # Raw dataset
+├── docker-compose.yml       # Configuration for multi-container Docker setup
+├── frontend                 # Frontend service code
+│   ├── Dockerfile           # Dockerfile for frontend container
+│   ├── app.py               # Frontend application script
+│   └── pyproject.toml       # Python project dependencies for frontend
+├── notebooks                # Jupyter notebooks for analysis
+│   ├── EDA.ipynb            # Exploratory Data Analysis (EDA)
+│   └── Model_Building.ipynb # Model selection and tuning
+└── train.py                 # Script to train the model
 ```
 
----
+## Instructions to Run the Project 💻
 
-## 🧩 Components
+### 1. Clone the Repository 💾
 
-### 1. **README.md**
-This file provides a comprehensive guide to the project, including usage instructions and details about each component.
+First, get the code by cloning the repository to your local machine. Run the following command:
 
-### 2. **app.py**
-A Streamlit-based frontend application that:
-- Collects user responses through an interactive questionnaire.
-- Sends data to a REST API for prediction.
-- Displays results and motivational messages based on predictions.
+```bash
+git clone ["https://github.com/sg-56/PCOS_Detection"]
+cd 
+```
 
-### 3. **backend/**
-Contains the backend components, including:
-- **Model Training**: Scripts for preprocessing and training the ML model.
-- **REST API**: A Flask-based API for serving predictions.
-- **Artifacts**: Stored trained model and preprocessing pipeline.
+### 2. Set Up the Environment 🛠️
 
-### 4. **Data/**
-Stores raw and processed datasets for training and analysis.
+- **Using Pipenv**:  
+  Install the required dependencies with Pipenv. 🎉
 
-### 5. **Notebooks/**
-Jupyter notebooks for:
-- Exploratory Data Analysis (EDA).
-- Feature engineering and model development.
+  ```bash
+  pipenv install
+  pipenv shell
+  ```
 
-### 6. **Dependencies**
-All required Python libraries are listed in `requirements.txt` or `pyproject.toml` for easy environment setup.
+- **Using Conda or Virtual Environment**:  
+  Or, create a virtual environment and install dependencies from `pyproject.toml` or `requirements.txt`.
 
-### 7. **Dockerfile**
-A Dockerfile for containerizing the backend service, ensuring consistency across different environments.
+### 3. Run the Application 🚀
 
----
+- **Train the Model**:  
+  Now, it's time to train the model! Run `train.py` to get started:
 
-## 🚀 Quick Start
+  ```bash
+  python train.py
+  ```
 
-1. **Clone the repository**:
-   ```bash
-   git clone <repository-url>
-   cd PCOS-Health-Check
-   ```
+- **Serve the Model**:  
+  Once the model is trained and saved, run `predict.py` to launch the web service and start serving predictions.
 
-2. **Set up the environment**:
-   ```bash
-   pip install -r requirements.txt
-   ```
+  ```bash
+  python predict.py
+  ```
 
-3. **Run the Streamlit app**:
-   ```bash
-   streamlit run app.py
-   ```
+### 4. Access the Web Service 🌐
 
-4. **Start the backend server**:
-   ```bash
-   cd backend
-   python main.py
-   ```
+Once the service is running, open your browser and navigate to the specified URL (e.g., `http://localhost:5000`). You’re good to go! 🖥️
 
-5. **Optional: Run with Docker**:
-   ```bash
-   docker build -t pcos-backend ./backend
-   docker run -p 5000:5000 pcos-backend
-   ```
+## Data 📊
 
----
+The data used to train and test the model is in the `data` folder. You can download it from here:
 
-## 🌟 Deployment
+- [PCOS Prediction Dataset](<dataset_download_url>) 📥
 
-The app can be deployed using services like Heroku, AWS, or Docker. Detailed deployment instructions are provided in the `backend/README.md` file.
+Files in `data/`:
 
----
+- `cleaned_data.csv`: Data that's ready to go for training.
+- `pcos_prediction_dataset.csv`: The raw dataset, ready for exploration.
 
-## 📊 Example Data Workflow
+## Notebook 📓
 
-1. User data is collected via the Streamlit app.
-2. Data is sent to the REST API for prediction.
-3. The REST API processes the data and returns a prediction (e.g., likelihood of PCOS).
-4. The app displays personalized feedback and motivational messages.
+We’ve provided some Jupyter notebooks to walk you through the entire process:
 
----
+- **EDA.ipynb**: Dive into Exploratory Data Analysis (EDA) and visualize the data. 📊
+- **Model_Building.ipynb**: Follow the journey of selecting and tuning the best model for PCOS prediction. 🤖
 
-## 🎉 Features
+These notebooks show how we prepare the data, analyze feature importance, and choose the perfect model. 🏆
 
-- **Interactive Questionnaire**: Engages users with an intuitive UI.
-- **ML-Powered Predictions**: Backend uses a trained model for predictions.
-- **Motivational Messaging**: Provides encouragement regardless of the prediction.
-- **Data Insights**: Supports healthcare awareness and decision-making.
+## Scripts 📝
 
----
+- **train.py**: 
+  - Loads the dataset, prepares it for training, and fits a machine learning model.
+  - Saves the trained model and preprocessor as `.pkl` files so you can use them later.
 
-## 🛠️ Contributing
+- **predict.py**:
+  - Loads the saved model and preprocessor.
+  - Deploys the model as a web service using Flask for real-time predictions.
 
-We welcome contributions to improve the app. Feel free to:
-- Submit bug reports or feature requests.
-- Fork the repository and create pull requests.
+## Files with Dependencies 📦
 
----
+- **pyproject.toml**: The Python project configuration file that lists all the dependencies. 📝
+- You can also use `requirements.txt` or `Pipenv` if you prefer! 💼
 
-## 📜 License
-This project is licensed under the MIT License. See `LICENSE` for more details.
+## Dockerfile 🐳
 
----
+Dockerfiles for both **backend** and **frontend** are included in their respective directories. These are used to create containers for the backend and frontend services.
 
-## 🤝 Acknowledgments
-- **Streamlit**: For the excellent framework.
-- **Flask**: For the robust REST API.
-- **PCOS Community**: For inspiring this initiative.
+### To build and run the Docker containers 🚢:
 
----
+```bash
+docker-compose up --build
+```
 
-## ⚠️ Disclaimer
-This app is not a substitute for professional medical advice. Always consult a healthcare provider for medical concerns.
+This will set up both the backend and frontend in Docker containers. Dockerize your life! 🐋
 
+## Deployment 🚀
+
+The model is deployed as a web service! 🎉 Once it’s running, you can interact with it by sending HTTP requests to the endpoint where the model is hosted. 🌍
+
+- **URL to the deployed service**: [<deployment_url>](<deployment_url>) 🌐
+- **Video demonstration**: [Check out this demo](<demo_link>) 🎥
+
+Let’s make PCOS prediction smarter and faster! 💡
