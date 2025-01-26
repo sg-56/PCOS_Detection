@@ -6,8 +6,8 @@ import pickle
 import pandas as pd
 
 
-MODEL_PATH = '.backend/artifacts/model.pkl'
-PREPROCESSOR_PATH = '.backend/artifacts/preprocessor.pkl'
+MODEL_PATH = 'backend/artifacts/model.pkl'
+PREPROCESSOR_PATH = 'backend/artifacts/preprocessor.pkl'
 def load_preproccesor():
     with open(PREPROCESSOR_PATH, 'rb') as file:
         preprocessor = pickle.load(file)
@@ -87,7 +87,7 @@ with st.form("pcos_form"):
             "Insulin_Resistance": insulin_resistance,
             "Lifestyle_Score": lifestyle_score,
             "Stress_Levels": stress_levels,
-            "Urban_Rural": urban_rural,
+            "Urban/Rural": urban_rural,
             "Socioeconomic_Status": socioeconomic_status,
             "Awareness_of_PCOS": awareness_pcos,
             "Fertility_Concerns": fertility_concerns,
