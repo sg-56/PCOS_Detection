@@ -41,9 +41,10 @@ Here’s the structure of the repository to help you navigate:
 │   ├── app.py               # Frontend application script
 │   └── pyproject.toml       # Python project dependencies for frontend
 ├── notebooks                # Jupyter notebooks for analysis
-│   ├── EDA.ipynb            # Exploratory Data Analysis (EDA)
-│   └── Model_Building.ipynb # Model selection and tuning
-└── train.py                 # Script to train the model
+    ├── EDA.ipynb            # Exploratory Data Analysis (EDA)
+    └── train.py                 # Script to train the model
+    └── Model_Building.ipynb # Model selection and tuning
+
 ```
 
 ## Instructions to Run the Project 💻
@@ -101,6 +102,7 @@ uv init
 Run `train.py` to train the model and save it for later use.
 
 ```bash
+cd ../notebooks
 uv run train.py
 ```
 
@@ -109,6 +111,7 @@ uv run train.py
 Once the model is trained, run `server.py` to launch the backend server:
 
 ```bash
+cd ../backend
 uv run fastapi run server.py
 ```
 
@@ -159,7 +162,7 @@ If you prefer to run both services together, you can use `docker-compose`. This 
 
 In the root directory, run:
 ```bash
-docker-compose up --build
+docker-compose up --build or sudo docker-compose --build (if you're on linux)
 ```
 
 This will build and start both the frontend and backend services. You can access the services at:
@@ -176,6 +179,30 @@ Files in `data/`:
 
 - `cleaned_data.csv`: Data that's ready to go for training.
 - `pcos_prediction_dataset.csv`: The raw dataset, ready for exploration.
+- 
+#### Key Findings
+    Numerical Summary:
+        Age: Mean = 31.98 years; ranges from 15 to 49 years.
+        Lifestyle Score: Mean = 5.51 (scale 1–10).
+        Undiagnosed PCOS Likelihood: Mean = 0.15 (ranges from 0.05 to 0.25).
+
+    Diagnosis Distribution:
+        89.5% of participants were not diagnosed with PCOS.
+        10.5% were diagnosed with PCOS.
+
+    BMI Distribution:
+        50.1% have a Normal BMI.
+        30.0% are Overweight, 14.9% are Obese, and 4.9% are Underweight.
+
+    Menstrual Regularity:
+        Among participants with Irregular Menstrual Cycles, 10.6% were diagnosed with PCOS.
+        For those with Regular Menstrual Cycles, only 10.4% were diagnosed.
+
+    Hirsutism:
+        15.0% of participants with Hirsutism were diagnosed with PCOS, compared to 10.5% without it.
+
+    Correlations:
+        Weak correlations exist between Age, Lifestyle Score, and Undiagnosed PCOS Likelihood, indicating that other factors (likely categorical ones) play a stronger role in PCOS diagnosis.
 
 ## Notebook 📓
 
